@@ -6,11 +6,10 @@ public class Player
 		private boolean isInJail;
 		private int doubleCount;
 		private int position;
-		public Player(String n, int c, boolean i, int d)
+		public Player(String n, int c, int d)
 		{
 			name = n;
 			cash = c;
-			isInJail = i;
 			doubleCount = d;
 		}
 		public String getName()
@@ -29,14 +28,6 @@ public class Player
 			{
 				this.cash = cash;
 			}
-		public boolean isInJail()
-			{
-				return isInJail;
-			}
-		public void setInJail(boolean isInJail)
-			{
-				this.isInJail = isInJail;
-			}
 		public int getDoubleCount()
 			{
 				return doubleCount;
@@ -51,5 +42,9 @@ public class Player
 			int r2 = (int)(Math.random()*6)+1;
 			this.position += (r1+r2);
 			this.doubleCount = (r1==r2)? this.doubleCount++ : 0;
+		}
+		public void arrest()
+		{
+			this.isInJail = true;
 		}
 	}
