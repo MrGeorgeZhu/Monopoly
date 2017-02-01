@@ -40,7 +40,14 @@ public class Player
 		{
 			int r1 = (int)(Math.random()*6)+1;
 			int r2 = (int)(Math.random()*6)+1;
-			this.position += (r1+r2);
+			if (this.position+r1+r2<Main.board.size())
+				this.position += (r1+r2);
+			else
+				{
+				this.position = this.position+r1+r2-Main.board.size();
+				this.cash = this.cash+200;
+				System.out.println("Salary");
+				}
 			this.doubleCount = (r1==r2)? this.doubleCount++ : 0;
 		}
 		public void arrest()
