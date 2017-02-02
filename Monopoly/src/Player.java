@@ -52,7 +52,9 @@ public class Player
 		public void rollDice()
 		{
 			int r1 = (int)(Math.random()*6)+1;
+			System.out.println("You rolled"+r1);
 			int r2 = (int)(Math.random()*6)+1;
+			System.out.println("You rolled"+r2);
 			if (this.position+r1+r2<Main.board.size())
 				this.position += (r1+r2);
 			else
@@ -62,6 +64,9 @@ public class Player
 				System.out.println("Salary");
 				}
 			this.doubleCount = (r1==r2)? this.doubleCount++ : 0;
+		}
+		public int getPosition() {
+			return position;
 		}
 		public void arrest()
 		{

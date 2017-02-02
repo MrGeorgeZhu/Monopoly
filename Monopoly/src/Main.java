@@ -4,7 +4,7 @@ public class Main
 	{
 		static Scanner userInput = new Scanner (System.in);
 		static ArrayList <Tile> board = new ArrayList <Tile>();
-		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortage", "Pay Mortage"};
+		static Object[] options = {"Roll", "Check Properties", "Sell House"};
 		public static void main(String[]args)
 		{
 			Rules.generateBoard();
@@ -40,12 +40,13 @@ public class Main
 					Rules.sellHouse(streets.get(a-1), player);
 					break;
 				}
-				case 3:
-				{
-					ArrayList <Property> properties = printProperty(player);
-					System.out.println("Choose the one you want to mortage.");
 				}
-				}
+				Tile t = board.get(player.getPosition());
+				System.out.println(player.getName()+" landed on "+t.getName()+" with $"+player.getCash());
+				if (t instanceof Property)
+					Rules.buyProperty((Property) t, player);
+				else if (t instanceof Tax)
+					((Tax)t).payTax(player);
 			}
 		}
 		public static ArrayList <Property> printProperty(Player player)
