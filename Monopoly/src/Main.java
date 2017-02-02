@@ -4,6 +4,7 @@ import java.util.concurrent.SynchronousQueue;
 import javax.swing.*;
 public class Main
 	{
+		static int turn = 0;
 		static Scanner userInput = new Scanner (System.in);
 		static ArrayList <Tile> board = new ArrayList <Tile>();
 		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage"};
@@ -16,6 +17,23 @@ public class Main
 			Player player = new Player(name, 1500, 0);
 			while(player.getCash()>=0)
 			{
+				if (player.isInJail()&&player.getCardCount()>0&&turn>0)
+					{
+						player.setCardCount(player.getCardCount()-1);
+						System.out.println("Out.");
+					}
+				else if (player.isInJail()&&turn>0)
+					{
+						System.out.println("Wait.");
+						turn--;
+					}
+				else if (player.isInJail()&&turn==0)
+					{
+						player.release((int)(Math.random()*6)+1==(int)(Math.random()*6)+1);
+						System.out.println("Wait for release");
+					}
+				else
+					{
 				int choice = JOptionPane.showOptionDialog(Tax.frame, "Choose action", "Monopoly", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 				switch (choice)
 				{
@@ -67,6 +85,12 @@ public class Main
 					Rules.buyProperty((Property) t, player);
 				else if (t instanceof Tax)
 					((Tax)t).payTax(player);
+				if (player.getDoubleCount()>=3||board.get(player.getPosition()).getName().equals("Go to jail!"))
+					{
+						JOptionPane.showMessageDialog(Tax.frame, "You are in big trouble, son.");
+						player.arrest(); turn = 3;
+					}
+					}
 			}
 		}
 		public static ArrayList <Property> printProperty(Player player)

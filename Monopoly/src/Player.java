@@ -71,5 +71,15 @@ public class Player
 		public void arrest()
 		{
 			this.isInJail = true;
+			this.setPosition(10);
+		}
+		public boolean isInJail()
+		{
+			return isInJail;
+		}
+		public void release(boolean b)
+		{
+			if (b)
+				this.isInJail=false;
 		}
 	}
