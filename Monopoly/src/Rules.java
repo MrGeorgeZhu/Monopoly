@@ -76,22 +76,42 @@ public class Rules
 		public static void generateBoard()
 		{
 			Main.board.add(new Tile("Start"));
-			Main.board.add(new Street("Mediterranian Avenue", null, 60, 2, "Purple", 50));
+			Main.board.add(new Street("Mediterranian Avenue", null, 60, 2, "Brown", 50));
 			Main.board.add(new Tile("Community Chest"));
-			Main.board.add(new Street("Baltic Avenue", null, 60, 4, "Purple", 50));
+			Main.board.add(new Street("Baltic Avenue", null, 60, 4, "Brown", 50));
 			Main.board.add(new Tax("Income", 200));
 			Main.board.add(new Property("Reading Railroad", null, 200, 25));
-			/*
-			 * George, please finish generating this board.
-			 * Google an image of monopoly board if you don't have one.
-			 * Every land with color tile on it need to be instantiated as a Street object.
-			 * Utilities like water, electricity and railroads need to be a Property object.
-			 * Luxury tax need to be a Tax object.
-			 * Community chest, chance, Go to jail and free parking need to be a Tile object.
-			 * Main.board should have a length of 40.
-			 * Check the constructor if you don't know how to instantiate.
-			 * Wechat me if there's any problem.
-			 * Thank you.
-			 */
+			Main.board.add(new Street("Oriental Avenue", null, 100, 6,"Light Blue", 50));
+			Main.board.add(new Tile("Chance"));
+			Main.board.add(new Street("Vermont avenue", null, 100, 6, "Light Blue", 50));
+			Main.board.add(new Street("Connecticut Avenue", null, 120, 6, "Light Blue", 50));
+			Main.board.add(new Tile("Jail"));
+			Main.board.add(new Street("St. Charles Place", null, 140, 6, "Purple", 50));
+			Main.board.add(new Property("Electric Company", null, 140, 25));
+			Main.board.add(new Street("State Avenue", null, 140, 6, "Purple", 50));
+			Main.board.add(new Street("Virginia Avenue", null, 160, 6, "Purple", 50));
+			Main.board.add(new Property("Pennsylvania Railroad", null, 200, 25));
+			Main.board.add(new Street("St. James Place", null, 180, 6, "Orange", 50));
+			Main.board.add(new Tile("Community Chest"));
+			Main.board.add(new Street("Tennessee Avenue", null, 180, 6, "Orange", 50));
+			Main.board.add(new Street("New York Avenue", null, 200, 6, "Orange", 50));
+			Main.board.add(new Tile("Free Parking"));
+			Main.board.add(new Street("Kentuky Avenue", null, 220, 6, "Red", 50));
+			Main.board.add(new Tile("Chance"));
+			Main.board.add(new Street("Indiana Avenue", null, 220, 6, "Red", 50));
+			Main.board.add(new Street("Illinois Avenue", null, 240, 6, "Red", 50));
+			Main.board.add(new Property("B.&O. Railroad", null, 200, 25));
+			Main.board.add(new Street("Atlantic Avenue", null, 260, 6, "Yellow", 50));
+			Main.board.add(new Street("Ventnor Avenue", null, 260, 6, "Yellow", 50));
+			Main.board.add(new Property("Water Works", null, 150, 25));
+			Main.board.add(new Tile("Go to jail!"));
+			Main.board.add(new Street("Pacific Avenue", null, 300, 6, "Green", 50));
+			Main.board.add(new Street("North Carolina Avenue", null, 300, 6, "Green", 50));
+			Main.board.add(new Tile("Community Chest"));
+			Main.board.add(new Street("Pensylvania Avenue", null, 300, 6, "Green", 50));
+			Main.board.add(new Property("Short Line", null, 200, 25));
+			Main.board.add(new Street("Park Place", null, 350, 6, "Dark Blue", 50));
+			Main.board.add(new Tax("Luxury Tax", 100));
+			Main.board.add(new Street("Boardwalk", null, 400, 6, "Dark Blue", 50));
 		}
 	}
