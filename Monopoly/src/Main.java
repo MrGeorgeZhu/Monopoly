@@ -1,10 +1,12 @@
 import java.util.*;
+import java.util.concurrent.SynchronousQueue;
+
 import javax.swing.*;
 public class Main
 	{
 		static Scanner userInput = new Scanner (System.in);
 		static ArrayList <Tile> board = new ArrayList <Tile>();
-		static Object[] options = {"Roll", "Check Properties", "Sell House"};
+		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage"};
 		public static void main(String[]args)
 		{
 			Rules.generateBoard();
@@ -40,9 +42,27 @@ public class Main
 					Rules.sellHouse(streets.get(a-1), player);
 					break;
 				}
+				case 3:
+						{
+					ArrayList <Property> properties = printProperty(player);
+					System.out.println("Choose the one you want to mortgage.");
+					int a = userInput.nextInt();
+					Rules.Mortgage(properties.get(a-1), player);
+					break;
+						}
+				case 4:
+						{
+					ArrayList <Property> properties = printProperty(player);
+					System.out.println("Choose the one you want to buy back.");
+					int a = userInput.nextInt();
+					Rules.payMortgage(properties.get(a-1), player);
+					break;
+						}
 				}
 				Tile t = board.get(player.getPosition());
 				System.out.println(player.getName()+" landed on "+t.getName()+" with $"+player.getCash());
+				if (t instanceof Street)
+					Rules.buyHouse((Street) t, player);
 				if (t instanceof Property)
 					Rules.buyProperty((Property) t, player);
 				else if (t instanceof Tax)
@@ -51,18 +71,34 @@ public class Main
 		}
 		public static ArrayList <Property> printProperty(Player player)
 		{
+			int i = 0;
 			ArrayList <Property> list = new ArrayList <Property>();
+			System.out.println();
+			System.out.printf("%-5s","Num");
+			System.out.printf("%-20s","Name");
+			System.out.printf("%-10s","Price");
+			System.out.printf("%-10s","Rent");
+			System.out.printf("%-10s","MortStat");
+			System.out.println();
 			for (Tile t: board)
 			{
 				if (t instanceof Property)
 				{
 					if (((Property) t).getOwner()==player)
 					{
-						System.out.println(((Property) t).getName()+((Property) t).getPrice()+((Property) t).getRent()+((Property) t).isInMortage());
+						i++;
+						System.out.printf("%-5s",i+".");
+						System.out.printf("%-20s",((Property)t).getName());
+						System.out.printf("%-10d",((Property)t).getPrice());
+						System.out.printf("%-10d",((Property)t).getRent());
+						System.out.printf("%-10b",((Property)t).isInMortgage());
+						System.out.println();
+						//System.out.println(((Property) t).getName()+((Property) t).getPrice()+((Property) t).getRent()+((Property) t).isInMortgage());
 						list.add((Property) t);
 					}
 				}
 			}
+			System.out.println();
 			return list;
 		}
 	}

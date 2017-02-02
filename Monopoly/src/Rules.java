@@ -10,6 +10,7 @@ public class Rules
 					buy = JOptionPane.showOptionDialog(Tax.frame, "Do you want to buy the property for $"+house.getPrice()+"?", "Choose wisely", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
 				}
 			if (buy == 0){ house.setOwner(player);
+			System.out.println(player.getName()+" paid $"+house.getPrice());
 			player.setCash(player.getCash()-house.getPrice());}
 		}
 		public static void buyHouse (Street land, Player player)
@@ -24,12 +25,15 @@ public class Rules
 								ownsAll = s.getOwner() == player && Math.abs(s.getHouseCount()-land.getHouseCount())<1 && land.getHouseCount()<5;
 						}
 				}
-			if (ownsAll&&player.getCash()>=land.getHouseCost())
+			if (ownsAll&&player.getCash()>=land.getHouseCost()&&land.getOwner()==player)
 				{
 					int buy = 1;
 					Object choice[] = {"Buy it", "No"};
 					buy = JOptionPane.showOptionDialog(Tax.frame, "Do you want to add a house for $"+land.getHouseCost()+"?", "Choose wisely", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-					if (buy == 0){land.setHouseCount(land.getHouseCount()+1);}
+					if (buy == 0){
+						player.setCash(player.getCash()-land.getHouseCost());
+						System.out.println(player.getName()+" paid $"+land.getHouseCost());
+						land.setHouseCount(land.getHouseCount()+1);}
 				}
 		}
 		public static void sellHouse(Street land, Player player)
@@ -40,24 +44,34 @@ public class Rules
 			}
 			else 
 			{
+				System.out.println(player.getName()+" earned $"+land.getHouseCost());
 				land.setHouseCount(land.getHouseCount()-1);
 				player.setCash(player.getCash()+land.getHouseCost());
 			}
 		}
-		public static void mortage (Property property, Player player)
+		public static void Mortgage (Property property, Player player)
 		{
-			if (property.getOwner()!=player)
+			if (property.isInMortgage())
 				System.out.println("Can't do");
 			else
 			{
-				property.setInMortage(true);
+				property.setInMortgage(true);
+				System.out.println(player.getName()+" earned $"+property.getPrice()/2);
 				player.setCash(player.getCash()+property.getPrice()/2);
 			}
 		}
-		public static void payMortage (Property property, Player player)
+		public static void payMortgage (Property property, Player player)
 		{
-			property.setInMortage(false);
+			if (!property.isInMortgage())
+				{
+					System.out.println("Can't do");
+				}
+			else
+				{
+			System.out.println(player.getName()+" paid $"+property.getPrice()/2);
+			property.setInMortgage(false);
 			player.setCash(player.getCash()-property.getPrice()/2);
+				}
 		}
 		public static void generateBoard()
 		{

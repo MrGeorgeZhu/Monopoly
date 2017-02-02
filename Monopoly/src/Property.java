@@ -4,7 +4,7 @@ public class Property extends Tile
 		private Player owner;
 		private int price;
 		private int rent;
-		private boolean isInMortage;
+		private boolean isInMortgage;
 	public Property(String n, Player o, int p, int r)
 		{
 			super(n);
@@ -36,10 +36,10 @@ public class Property extends Tile
 		{
 			this.rent = rent;
 		}
-	public boolean isInMortage() {
-		return isInMortage;
+	public boolean isInMortgage() {
+		return isInMortgage;
 	}
-	public void setInMortage(boolean isInMortage) {
-		this.isInMortage = isInMortage;
+	public void setInMortgage(boolean isInMortgage) {
+		this.isInMortgage = isInMortgage;
 	}
 	}
