@@ -78,6 +78,7 @@ public class Main
 						}
 				}
 				Tile t = board.get(player.getPosition());
+				Rules.chance(t, player);
 				System.out.println(player.getName()+" landed on "+t.getName()+" with $"+player.getCash());
 				if (t instanceof Street)
 					Rules.buyHouse((Street) t, player);

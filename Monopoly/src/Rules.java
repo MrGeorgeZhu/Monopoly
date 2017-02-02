@@ -73,6 +73,14 @@ public class Rules
 			player.setCash(player.getCash()-property.getPrice()/2);
 				}
 		}
+		public static void chance(Tile t, Player player)
+		{
+			if ((t.getName().equals("Community Chest")||t.getName().equals("Chance")&&(int)(Math.random()*5)==0))
+					{
+				player.setCardCount(player.getCardCount()+1);
+				System.out.println("You got an card.");
+					}
+		}
 		public static void generateBoard()
 		{
 			Main.board.add(new Tile("Start"));
