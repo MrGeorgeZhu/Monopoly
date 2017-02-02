@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.concurrent.SynchronousQueue;
-
 import javax.swing.*;
 public class Main
 	{
