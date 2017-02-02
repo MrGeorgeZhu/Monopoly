@@ -1,18 +1,18 @@
 import javax.swing.*;
 public class Rules
 	{
-		public void buyProperty (Property house, Player player)
+		public static void buyProperty (Property house, Player player)
 		{
 			int buy = 1;
 			Object choice[] = {"Buy it", "No"};
-			if (house.getOwner() == null)
+			if (house.getOwner() == null && player.getCash()>=house.getPrice())
 				{
 					buy = JOptionPane.showOptionDialog(Tax.frame, "Do you want to buy the property for $"+house.getPrice()+"?", "Choose wisely", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
 				}
 			if (buy == 0){ house.setOwner(player);
 			player.setCash(player.getCash()-house.getPrice());}
 		}
-		public void buyHouse (Street land, Player player)
+		public static void buyHouse (Street land, Player player)
 		{
 			boolean ownsAll = false;
 			for (int i = 0; i < Main.board.size(); i++)
@@ -24,7 +24,7 @@ public class Rules
 								ownsAll = s.getOwner() == player && Math.abs(s.getHouseCount()-land.getHouseCount())<1 && land.getHouseCount()<5;
 						}
 				}
-			if (ownsAll)
+			if (ownsAll&&player.getCash()>=land.getHouseCost())
 				{
 					int buy = 1;
 					Object choice[] = {"Buy it", "No"};
@@ -32,7 +32,34 @@ public class Rules
 					if (buy == 0){land.setHouseCount(land.getHouseCount()+1);}
 				}
 		}
-		public void generateBoard()
+		public static void sellHouse(Street land, Player player)
+		{
+			if (land.getOwner()!=player||land.getHouseCount()<1)
+			{
+				System.out.println("Can't do");
+			}
+			else 
+			{
+				land.setHouseCount(land.getHouseCount()-1);
+				player.setCash(player.getCash()+land.getHouseCost());
+			}
+		}
+		public static void mortage (Property property, Player player)
+		{
+			if (property.getOwner()!=player)
+				System.out.println("Can't do");
+			else
+			{
+				property.setInMortage(true);
+				player.setCash(player.getCash()+property.getPrice()/2);
+			}
+		}
+		public static void payMortage (Property property, Player player)
+		{
+			property.setInMortage(false);
+			player.setCash(player.getCash()-property.getPrice()/2);
+		}
+		public static void generateBoard()
 		{
 			Main.board.add(new Tile("Start"));
 			Main.board.add(new Street("Mediterranian Avenue", null, 60, 2, "Purple", 50));

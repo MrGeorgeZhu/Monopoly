@@ -4,6 +4,7 @@ public class Street extends Property
 		private String color;
 		private int houseCount;
 		private int houseCost;
+		private boolean isInMortage;
 	public Street(String n, Player o, int p, int r, String c, int hC)
 		{
 			super(n, o, p, r);
@@ -41,5 +42,10 @@ public class Street extends Property
 		{
 			this.houseCost = houseCost;
 		}
-
+	public boolean isInMortage() {
+		return isInMortage;
+	}
+	public void setInMortage(boolean isInMortage) {
+		this.isInMortage = isInMortage;
+	}
 	}

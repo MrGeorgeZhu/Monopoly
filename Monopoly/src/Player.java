@@ -5,12 +5,25 @@ public class Player
 		private int cash;
 		private boolean isInJail;
 		private int doubleCount;
+		private int cardCount;
 		private int position;
 		public Player(String n, int c, int d)
 		{
 			name = n;
 			cash = c;
 			doubleCount = d;
+			this.setDoubleCount(0);
+			this.setPosition(0);
+			this.setCardCount(0);
+		}
+		public int getCardCount() {
+			return cardCount;
+		}
+		public void setCardCount(int cardCount) {
+			this.cardCount = cardCount;
+		}
+		public void setPosition(int position) {
+			this.position = position;
 		}
 		public String getName()
 			{
