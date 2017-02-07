@@ -5,7 +5,7 @@ public class Tax extends Tile
 		private int amount;
 		public Tax(String n, int a) 
 		{
-			super(n+" tax");
+			super(n);
 			amount = a;
 		}
 		public int getAmount() {

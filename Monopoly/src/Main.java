@@ -35,7 +35,7 @@ public class Main
 				int choice = JOptionPane.showOptionDialog(Tax.frame, "Choose action", "Monopoly", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 				switch (choice)
 				{
-				case 0: {player.rollDice(); break;}
+				case 0: {player.rollDice2(); break;}
 				case 1: 
 				{
 					printProperty(player);
@@ -84,13 +84,14 @@ public class Main
 					Rules.buyProperty((Property) t, player);
 				else if (t instanceof Tax)
 					((Tax)t).payTax(player);
-				if (player.getDoubleCount()>=3||board.get(player.getPosition()).getName().equals("Go to jail!"))
+				if (player.getDoubleCount()>=3||board.get(player.getPosition()).getName().indexOf("Go to")>0)
 					{
 						JOptionPane.showMessageDialog(Tax.frame, "You are in big trouble, son.");
 						player.arrest(); turn = 3;
 					}
 					}
 			}
+			JOptionPane.showMessageDialog(Tax.frame, "GG.");
 		}
 		public static ArrayList <Property> printProperty(Player player)
 		{

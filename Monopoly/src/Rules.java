@@ -87,7 +87,7 @@ public class Rules
 			Main.board.add(new Street("Mediterranian Avenue", null, 60, 2, "Brown", 50));
 			Main.board.add(new Tile("Community Chest"));
 			Main.board.add(new Street("Baltic Avenue", null, 60, 4, "Brown", 50));
-			Main.board.add(new Tax("Income", 200));
+			Main.board.add(new Tax("Income tax", 200));
 			Main.board.add(new Property("Reading Railroad", null, 200, 25));
 			Main.board.add(new Street("Oriental Avenue", null, 100, 6,"Light Blue", 50));
 			Main.board.add(new Tile("Chance"));
@@ -119,7 +119,51 @@ public class Rules
 			Main.board.add(new Street("Pensylvania Avenue", null, 300, 6, "Green", 50));
 			Main.board.add(new Property("Short Line", null, 200, 25));
 			Main.board.add(new Street("Park Place", null, 350, 6, "Dark Blue", 50));
-			Main.board.add(new Tax("Luxury Tax", 100));
+			Main.board.add(new Tax("Luxury tax", 100));
 			Main.board.add(new Street("Boardwalk", null, 400, 6, "Dark Blue", 50));
+		}
+		public static void generateCo14()
+		{
+			generateBoard();
+			Main.board.get(0).setName("Trailhead");
+			Main.board.get(1).setName("Mount Sherman");
+			Main.board.get(2).setName("Trail Fortune");
+			Main.board.get(3).setName("Quandary Peak");
+			Main.board.get(4).setName("Initiative");
+			Main.board.get(5).setName("Little Bear Blanca");
+			Main.board.get(6).setName("Mount Berstadt");
+			Main.board.get(7).setName("Adventure");
+			Main.board.get(8).setName("Torrey Peak");
+			Main.board.get(9).setName("Gray's Peak");
+			Main.board.get(10).setName("Base camp");
+			Main.board.get(11).setName("Mt. Yale");
+			Main.board.get(12).setName("Pikes Peak");
+			Main.board.get(13).setName("Mt. Princeton");
+			Main.board.get(14).setName("Mt. Harvard");
+			Main.board.get(15).setName("Crestone");
+			Main.board.get(16).setName("Humboldt Peak");
+			Main.board.get(17).setName("Trail Fortune");
+			Main.board.get(18).setName("Mt. Lindsey");
+			Main.board.get(19).setName("Kit Karsen Peak");
+			Main.board.get(20).setName("Scenetic Viewpoint");
+			Main.board.get(21).setName("Mt. Sneffels");
+			Main.board.get(22).setName("Adventure");
+			Main.board.get(23).setName("Uncompahgre Peak");
+			Main.board.get(24).setName("Mt. Eolus");
+			Main.board.get(25).setName("Wilson El-Diente");
+			Main.board.get(26).setName("Mount of the holy Cross");
+			Main.board.get(27).setName("Mt. Massive");
+			Main.board.get(28).setName("Mt. Evans");
+			Main.board.get(29).setName("Mt. Elbert");
+			Main.board.get(30).setName("Go to Basecamp");
+			Main.board.get(31).setName("Castle Peak");
+			Main.board.get(32).setName("Snowmass Mountain");
+			Main.board.get(33).setName("Trail Fortune");
+			Main.board.get(34).setName("Pyramid Peak");
+			Main.board.get(35).setName("Maroon Bells");
+			Main.board.get(36).setName("Adventure");
+			Main.board.get(37).setName("Longs Peak");
+			Main.board.get(38).setName("Lost Boot");
+			Main.board.get(39).setName("Capitol Peak");
 		}
 	}

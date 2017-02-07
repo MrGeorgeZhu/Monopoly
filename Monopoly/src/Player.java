@@ -7,6 +7,7 @@ public class Player
 		private int doubleCount;
 		private int cardCount;
 		private int position;
+		private boolean wentToJail = false;
 		public Player(String n, int c, int d)
 		{
 			name = n;
@@ -65,12 +66,30 @@ public class Player
 				}
 			this.doubleCount = (r1==r2)? this.doubleCount++ : 0;
 		}
+		public void rollDice2()
+		{
+			int last = this.position;
+			int r1 = (int)(Math.random()*6)+1;
+			System.out.println("You rolled a "+r1);
+			int r2 = (int)(Math.random()*6)+1;
+			System.out.println("You rolled a "+r2);
+			if (!wentToJail)
+					this.position = (this.position+r1+r2)%Main.board.size();
+			else
+					this.position = (this.position-r1-r2<0)? Main.board.size()-this.position+r1+r2 : this.position-r1-r2;
+			if (wentToJail ^ (this.position < last))
+				{
+					this.cash = this.cash+200;
+					System.out.println("Salary");
+				}
+		}
 		public int getPosition() {
 			return position;
 		}
 		public void arrest()
 		{
 			this.isInJail = true;
+			wentToJail = !wentToJail;
 			this.setPosition(10);
 		}
 		public boolean isInJail()
