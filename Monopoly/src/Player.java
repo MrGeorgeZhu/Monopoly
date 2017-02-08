@@ -76,7 +76,7 @@ public class Player
 			if (!wentToJail)
 					this.position = (this.position+r1+r2)%Main.board.size();
 			else
-					this.position = (this.position-r1-r2<0)? Main.board.size()-this.position+r1+r2 : this.position-r1-r2;
+					this.position = (this.position-r1-r2<0)? Main.board.size()+(this.position-r1-r2) : this.position-r1-r2;
 			//if ((wentToJail&&this.position > last)||(!wentToJail&&this.position < last))
 			if (wentToJail ^ (this.position < last))
 				{

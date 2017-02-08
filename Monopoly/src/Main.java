@@ -25,6 +25,7 @@ public class Main
 					{
 						player.setCardCount(player.getCardCount()-1);
 						System.out.println("Out.");
+						player.release(true);
 					}
 				else if (player.isInJail()&&turn>0)
 					{
@@ -100,7 +101,7 @@ public class Main
 					Rules.buyProperty((Property) t, player);
 				else if (t instanceof Tax)
 					((Tax)t).payTax(player);
-				if (player.getDoubleCount()>=3||board.get(player.getPosition()).getName().indexOf("Go to")>0)
+				if (player.getDoubleCount()>=3||player.getPosition()==29)
 					{
 						JOptionPane.showMessageDialog(Tax.frame, "You are in big trouble, son.");
 						player.arrest(); turn = 3;
