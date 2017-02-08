@@ -8,6 +8,8 @@ public class Main
 		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage"};
 		public static void main(String[]args)
 		{
+			Object[] versions = {"Normal", "Co14er"};
+			int ver = JOptionPane.showOptionDialog(Tax.frame, "Choose the version", "Versions", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, versions[0]);
 			Rules.generateBoard();
 			System.out.print("Enter character name: ");
 			String name = userInput.nextLine();

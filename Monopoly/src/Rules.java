@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.util.Scanner;
+import java.io.*;
 public class Rules
 	{
 		public static void buyProperty (Property house, Player player)
@@ -122,10 +124,15 @@ public class Rules
 			Main.board.add(new Tax("Luxury tax", 100));
 			Main.board.add(new Street("Boardwalk", null, 400, 6, "Dark Blue", 50));
 		}
-		public static void generateCo14()
+		public static void generateCo14() throws IOException
 		{
 			generateBoard();
-			Main.board.get(0).setName("Trailhead");
+			Scanner file = new Scanner(new File ("co14er.txt"));
+			for (int i = 0; i < Main.board.size(); i++)
+				{
+					Main.board.get(i).setName(file.nextLine());
+				}
+			/*Main.board.get(0).setName("Trailhead");
 			Main.board.get(1).setName("Mount Sherman");
 			Main.board.get(2).setName("Trail Fortune");
 			Main.board.get(3).setName("Quandary Peak");
@@ -164,6 +171,6 @@ public class Rules
 			Main.board.get(36).setName("Adventure");
 			Main.board.get(37).setName("Longs Peak");
 			Main.board.get(38).setName("Lost Boot");
-			Main.board.get(39).setName("Capitol Peak");
+			Main.board.get(39).setName("Capitol Peak");*/
 		}
 	}
