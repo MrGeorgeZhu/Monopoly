@@ -1,16 +1,20 @@
 import java.util.*;
 import javax.swing.*;
+import java.io.IOException;
 public class Main
 	{
 		static int turn = 0;
 		static Scanner userInput = new Scanner (System.in);
 		static ArrayList <Tile> board = new ArrayList <Tile>();
 		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage"};
-		public static void main(String[]args)
+		public static void main(String[]args) throws IOException
 		{
 			Object[] versions = {"Normal", "Co14er"};
 			int ver = JOptionPane.showOptionDialog(Tax.frame, "Choose the version", "Versions", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, versions[0]);
+			if (ver==0)
 			Rules.generateBoard();
+			else
+				Rules.generateCo14();
 			System.out.print("Enter character name: ");
 			String name = userInput.nextLine();
 			System.out.println();
@@ -29,8 +33,18 @@ public class Main
 					}
 				else if (player.isInJail()&&turn==0)
 					{
-						player.release((int)(Math.random()*6)+1==(int)(Math.random()*6)+1);
-						System.out.println("Wait for release");
+						int r1 = 0, r2 = 0;
+						Object [] out = {"Pay $50", "Roll"};
+						int choice = JOptionPane.showOptionDialog(Tax.frame, "Choose your action", "In Jail", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, out, out[0]);
+						if (choice == 0)
+							player.setCash(player.getCash()-50);
+						else
+							{
+							r1 = (int)(Math.random()*6)+1; System.out.println("You rolled a "+r1);
+							r2 = (int)(Math.random()*6)+1; System.out.println("You rolled a "+r2);
+							System.out.println("Rolling");
+							}
+						player.release(r1==r2||choice==0);
 					}
 				else
 					{
