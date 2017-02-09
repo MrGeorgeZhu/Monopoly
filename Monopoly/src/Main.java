@@ -6,7 +6,7 @@ public class Main
 		static int turn = 0;
 		static Scanner userInput = new Scanner (System.in);
 		static ArrayList <Tile> board = new ArrayList <Tile>();
-		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage"};
+		static Object[] options = {"Roll", "Check Properties", "Sell House", "Mortgage Property", "Buy Mortgage", "I'm bored."};
 		public static void main(String[]args) throws IOException
 		{
 			Object[] versions = {"Normal", "Co14er"};
@@ -91,6 +91,12 @@ public class Main
 					Rules.payMortgage(properties.get(a-1), player);
 					break;
 						}
+				default :
+				{
+					System.out.println("Well, let's put you in somewhere fun.");
+					player.arrest();
+					break;
+				}
 				}
 				Tile t = board.get(player.getPosition());
 				Rules.chance(t, player);
